@@ -1,3 +1,5 @@
+#SingleInstance Force
+
 #Requires AutoHotkey v2.0
 
 #Include SendInput.ahk
@@ -11,7 +13,12 @@ Keycode := FileRead("Keycode.txt")
 ; Just Send Inputs To All Of Them
 SendInputs() {
     for pid in WinGetList("Roblox") {
-        SendKeycode(pid, Keycode)
+        SplitPath WinGetProcessPath(pid), &name
+
+        ; Double Checking
+        if (name == "RobloxPlayerBeta.exe") {
+            SendKeycode(pid, Keycode)
+        }
     }
 }
 
