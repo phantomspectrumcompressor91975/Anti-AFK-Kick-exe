@@ -13,7 +13,11 @@ SendInputs() {
 
         ; Double Checking
         if (name == "RobloxPlayerBeta.exe") {
-            
+            while true {
+                DllCall("SendInput")
+                SendMessage(0x0102, 0x78, 0, pid)
+                Sleep 1000
+            }
         }
     }
 }
